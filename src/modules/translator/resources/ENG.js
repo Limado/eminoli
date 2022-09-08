@@ -4,6 +4,18 @@ const Resources = [{
         "value": "ABOUT"
     },
     {
+        "key": "menu_1",
+        "value": "Home"
+    },
+    {
+        "key": "menu_2",
+        "value": "About"
+    },
+    {
+        "key": "menu_3",
+        "value": "Resume"
+    },
+    {
         "key": "about_description_1_line_1",
         "value": "Enthusiastic and pasionate by software and web development."
     },
@@ -46,6 +58,10 @@ const Resources = [{
     {
         "key": "age",
         "value": "Age:"
+    },
+    {
+        "key": "resume_title",
+        "value": "Profesional Experience"
     },
     {
         "key": "email",

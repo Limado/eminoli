@@ -4,6 +4,18 @@ const Resources = [{
         "value": "Sobre mi"
     },
     {
+        "key": "menu_1",
+        "value": "Inicio"
+    },
+    {
+        "key": "menu_2",
+        "value": "Sobre mi"
+    },
+    {
+        "key": "menu_3",
+        "value": "Trayectoria"
+    },
+    {
         "key": "about_description_1_line_1",
         "value": "Entusiasta y apasionado por el desarrollo de software."
     },
@@ -46,6 +58,10 @@ const Resources = [{
     {
         "key": "age",
         "value": "Edad:"
+    },
+    {
+        "key": "resume_title",
+        "value": "Experiencia Profesional"
     },
     {
         "key": "email",
