@@ -27,7 +27,7 @@
         "watch": "nodemon --exec \"npm run build-dev && node nodeserver/express.js\" -e ts,js,html,css --ignore public/",
         "build-dev": "webpack --mode=development",
         "build": "webpack-cli --mode=production",
-        "start": "node src/core/nodeserver/express.js PRODUCTION",
+        "start": "node nodeserver/express.js PRODUCTION",
         "start-dev": "node src/core/nodeserver/express.js DEVELOPMENT",
         "reinstall": "rm -rf node_modules package-lock.json && npm cache clean --force && npm install"
     },

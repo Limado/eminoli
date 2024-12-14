@@ -34,9 +34,9 @@ jobs:
     - name: Copy public content from development to main
       run: |
         git fetch origin development  # Asegurarse de que la rama development esté actualizada
-        git checkout origin/development -- public  # Copiar solo la carpeta public desde development
-        cp -r public/* .  # Copiar todo el contenido de public/ a la raíz de main
-        rm -rf public  # Eliminar la carpeta public después de mover su contenido
+        git checkout origin/development -- dist  # Copiar solo la carpeta dist desde development
+        cp -r dist/* .  # Copiar todo el contenido de dist/ a la raíz de main
+        rm -rf dist  # Eliminar la carpeta public después de mover su contenido
 
     # 5. Commit y push de los cambios en main
     - name: Commit and push changes to main
