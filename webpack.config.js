@@ -1,5 +1,6 @@
 const path = require('path');
-const CopyPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlMinimizerPlugin = require("html-minimizer-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
@@ -9,13 +10,21 @@ const TerserPlugin = require("terser-webpack-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const { extendDefaultPlugins } = require("svgo");
 
+// Busca el argumento "--mode" en process.argv
+const modeIndex = process.argv.indexOf('--mode=production');
+const mode = modeIndex !== -1 ? "production" : 'development'; // Valor por defecto 'development'
+const isProduction = mode.toLowerCase() === 'production';
+
+console.log(`Build mode: ${mode}`);
+
 module.exports = {
     // The entry point file described above
     entry: './src/index.js',
     // The location of the build folder described above
     output: {
-        path: path.resolve(__dirname, 'public'),
-        filename: 'index.js'
+        filename: `index.js`,
+        path: path.resolve(__dirname, isProduction ? 'dist' : 'public'),
+        clean: true,
     },
     // Optional and for development only. This provides the ability to
     // map the built code back to the original source format when debugging.
@@ -30,7 +39,7 @@ module.exports = {
         }],
     },
     plugins: [
-        new CopyPlugin({
+        new CopyWebpackPlugin({
             patterns: [
                 { from: path.resolve(__dirname, 'src/assets'), to: path.resolve(__dirname, 'public/assets') },
                 {
@@ -65,15 +74,15 @@ module.exports = {
                                 "svgo",
                                 {
                                     plugins: extendDefaultPlugins([{
-                                            name: "removeViewBox",
-                                            active: false,
+                                        name: "removeViewBox",
+                                        active: false,
+                                    },
+                                    {
+                                        name: "addAttributesToSVGElement",
+                                        params: {
+                                            attributes: [{ xmlns: "http://www.w3.org/2000/svg" }],
                                         },
-                                        {
-                                            name: "addAttributesToSVGElement",
-                                            params: {
-                                                attributes: [{ xmlns: "http://www.w3.org/2000/svg" }],
-                                            },
-                                        },
+                                    },
                                     ]),
                                 },
                             ],
