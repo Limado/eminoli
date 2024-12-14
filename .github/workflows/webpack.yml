@@ -32,10 +32,13 @@ jobs:
         fetch-depth: 0  # Obtener todas las ramas y referencias para poder hacer merge y copiar contenido
 
     # 4. Traer el contenido de dist desde development a main
-    - name: Copy dist content from development to main
+    - name: Fetch development branch and copy dist content
       run: |
-        # Traer la carpeta dist desde la rama development
-        git checkout development -- dist
+        # Traer los cambios de la rama development
+        git fetch origin development
+        
+        # Ahora podemos hacer checkout de la carpeta dist desde development
+        git checkout origin/development -- dist
         
         # Copiar todo el contenido de dist a la raíz de main
         cp -r dist/* .
