@@ -17,7 +17,7 @@ jobs:
       with:
         ref: development
 
-    # 2. Hacer merge de development a main
+    # 2. Hacer merge de development a main (permitir historiales no relacionados)
     - name: Merge development into main
       run: |
         git fetch origin
@@ -31,7 +31,7 @@ jobs:
         npm run build  # Cambia esto si tu proceso de build es diferente
 
     # 4. Eliminar todo excepto la carpeta public/
-    - name: Clear all except public
+    - name: Clear main branch content except public
       run: |
         find . -mindepth 1 -not -name 'public' -exec rm -rf {} +  # Eliminar todo excepto `public`
 
@@ -41,11 +41,15 @@ jobs:
         cp -r public/* .  # Copiar el contenido de public a la raíz
         rm -rf public  # Eliminar la carpeta public después de mover el contenido
 
-    # 6. Confirmar y publicar los cambios en main
-    - name: Commit and push changes to main
+    # 6. Configurar el nombre y correo para el commit
+    - name: Configure git user
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
+
+    # 7. Confirmar y publicar los cambios en main
+    - name: Commit and push changes to main
+      run: |
         git add .
         git commit -m "Deploy from development to main"
         git push origin main --force
