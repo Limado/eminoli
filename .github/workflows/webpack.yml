@@ -15,36 +15,44 @@ jobs:
       uses: actions/checkout@v3
       with:
         ref: development
-        fetch-depth: 0  # Asegura que se obtienen todas las referencias del repositorio
+        fetch-depth: 0  # Asegura que tengamos todas las ramas remotas y el historial completo
 
-    # 2. Hacer el build en la rama development
+    # 2. Hacer el build en la rama development (esto generará la carpeta dist)
     - name: Build project in development
       run: |
         npm install
-        npm run build  # Ajusta este comando si tu build es diferente
+        npm run build  # Ajusta este comando si tu proceso de build es diferente
+        # Esto generará la carpeta `dist/` en el directorio actual
 
     # 3. Checkout de la rama main
     - name: Checkout main branch
       uses: actions/checkout@v3
       with:
         ref: main
-        fetch-depth: 0  # Obtener todas las ramas y referencias
+        fetch-depth: 0  # Obtener todas las ramas y referencias para poder hacer merge y copiar contenido
 
-    # 4. Copiar el contenido de public/ desde development a main
-    - name: Copy public content from development to main
+    # 4. Traer el contenido de dist desde development a main
+    - name: Copy dist content from development to main
       run: |
-        git fetch origin development  # Asegurarse de que la rama development esté actualizada
-        git checkout origin/development -- dist  # Copiar solo la carpeta dist desde development
-        cp -r dist/* .  # Copiar todo el contenido de dist/ a la raíz de main
-        rm -rf dist  # Eliminar la carpeta public después de mover su contenido
+        # Traer la carpeta dist desde la rama development
+        git checkout development -- dist
+        
+        # Copiar todo el contenido de dist a la raíz de main
+        cp -r dist/* .
+        
+        # Eliminar la carpeta dist después de mover su contenido
+        rm -rf dist
 
     # 5. Commit y push de los cambios en main
     - name: Commit and push changes to main
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Usa el token secreto de GitHub Actions
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Usar el token secreto para autenticarse
       run: |
+        # Configurar nombre y correo del usuario para Git
         git config user.name "GitHub Actions"
         git config user.email "github-actions@github.com"
+        
+        # Hacer commit y subir los cambios a la rama main
         git add .
         git commit -m "Deploy from development to main"
         git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git main --force
