@@ -1,5 +1,5 @@
 const express = require('express')
-const https = require('https');
+const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const port = 8080;
@@ -7,14 +7,14 @@ const url = require('url');
 //const proxy = require('express-http-proxy');
 
 
-const certKey = path.join(__dirname, 'self-signed-sf.key');
-const key = fs.readFileSync(certKey);
-const certPath = path.join(__dirname, 'self-signed-sf.crt');
-const cert = fs.readFileSync(certPath);
-const options = {
-    key: key,
-    cert: cert
-};
+// const certKey = path.join(__dirname, 'self-signed-sf.key');
+// const key = fs.readFileSync(certKey);
+// const certPath = path.join(__dirname, 'self-signed-sf.crt');
+// const cert = fs.readFileSync(certPath);
+// const options = {
+//     key: key,
+//     cert: cert
+// };
 
 //var NeoApi = "https://190.210.88.45";
 const app = express();
@@ -59,7 +59,7 @@ app.get("/*", (req, res) => {
 // });
 
 /** Server https */
-let server = https.createServer(options, app);
+let server = http.createServer(app);
 server.listen(port, () => {
     console.log("server starting on port : " + port)
 });
