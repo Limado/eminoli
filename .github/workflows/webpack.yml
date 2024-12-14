@@ -1,28 +1,41 @@
-name: NodeJS with Webpack
+name: Build and Deploy
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - development  # Ejecutar cuando haya cambios en la rama development
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [20.12.0]
-
     steps:
-    - uses: actions/checkout@v4
+    # 1. Chequear el repositorio
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
+    # 2. Configurar Node.js
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: '18'  # Cambia la versión según tu proyecto
 
-    - name: Build
+    # 3. Instalar dependencias
+    - name: Install dependencies
+      run: npm install
+
+    # 4. Construir el proyecto
+    - name: Build project
+      run: npm run build # Cambia este comando si tu proyecto usa otro proceso de build
+
+    # 5. Desplegar a la rama main
+    - name: Deploy to Main
       run: |
-        npm install
-        npx webpack --mode=production
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git checkout -b main || git checkout main
+        rm -rf *
+        cp -r build/* .
+        git add .
+        git commit -m "Deploy from GitHub Actions"
+        git push origin main --force
