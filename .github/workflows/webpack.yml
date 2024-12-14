@@ -1,0 +1,42 @@
+name: Build and Deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - development  # Ejecutar cuando haya cambios en la rama development
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Chequear el repositorio
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # 2. Configurar Node.js
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'  # Cambia la versión según tu proyecto
+
+    # 3. Instalar dependencias
+    - name: Install dependencies
+      run: npm install
+
+    # 4. Construir el proyecto
+    - name: Build project
+      run: npm run build # Cambia este comando si tu proyecto usa otro proceso de build
+
+    # 5. Desplegar a la rama main
+    - name: Deploy to Main
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git checkout -b main || git checkout main
+        rm -rf *
+        cp -r build/* .
+        git add .
+        git commit -m "Deploy from GitHub Actions"
+        git push origin main --force
