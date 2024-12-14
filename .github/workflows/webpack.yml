@@ -3,44 +3,42 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - development  # Ejecutar cuando haya cambios en development
+      - development  # Ejecutar cuando haya cambios en `development`
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Checkout a la rama development para hacer el merge
+    # 1. Checkout de la rama development para hacer el build
     - name: Checkout development branch
       uses: actions/checkout@v3
       with:
         ref: development
+        fetch-depth: 0  # Asegura que se obtienen todas las referencias del repositorio
 
-    # 2. Hacer merge de development a main (permitir historiales no relacionados)
-    - name: Merge development into main
-      run: |
-        git fetch origin
-        git checkout main
-        git merge development --no-ff --allow-unrelated-histories -m "Merge development into main"
-
-    # 3. Hacer el build en la rama main
-    - name: Build project on main
+    # 2. Hacer el build en la rama development
+    - name: Build project in development
       run: |
         npm install
-        npm run build  # Cambia esto si tu proceso de build es diferente
+        npm run build  # Ajusta este comando si tu build es diferente
 
-    # 4. Eliminar todo excepto la carpeta public/
-    - name: Clear main branch content except public
+    # 3. Checkout de la rama main
+    - name: Checkout main branch
+      uses: actions/checkout@v3
+      with:
+        ref: main
+        fetch-depth: 0  # Obtener todas las ramas y referencias
+
+    # 4. Copiar el contenido de public/ desde development a main
+    - name: Copy public content from development to main
       run: |
-        find . -mindepth 1 -not -name 'public' -exec rm -rf {} +  # Eliminar todo excepto `public`
+        git fetch origin development  # Asegurarse de que la rama development esté actualizada
+        git checkout origin/development -- public  # Copiar solo la carpeta public desde development
+        cp -r public/* .  # Copiar todo el contenido de public/ a la raíz de main
+        rm -rf public  # Eliminar la carpeta public después de mover su contenido
 
-    # 5. Mover el contenido de `public` a la raíz
-    - name: Move public content to root
-      run: |
-        cp -r public/* .  # Copiar el contenido de public a la raíz
-        rm -rf public  # Eliminar la carpeta public después de mover el contenido
-
-    # 6. Confirmar y publicar los cambios en main usando un token de GitHub
+    # 5. Commit y push de los cambios en main
     - name: Commit and push changes to main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Usa el token secreto de GitHub Actions
