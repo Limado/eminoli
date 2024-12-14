@@ -36,7 +36,7 @@ jobs:
         git config user.email "github-actions[bot]@users.noreply.github.com"
         git checkout -b main || git checkout main
         rm -rf *
-        cp -r build/* .
+        cp -r public/* .
         git add .
         git commit -m "Deploy from GitHub Actions"
         git push origin main --force
