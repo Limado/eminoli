@@ -22,7 +22,7 @@ jobs:
       run: |
         git fetch origin
         git checkout main
-        git merge development --no-ff -m "Merge development into main"
+        git merge development --no-ff --allow-unrelated-histories -m "Merge development into main"
 
     # 3. Hacer el build en la rama main
     - name: Build project on main
