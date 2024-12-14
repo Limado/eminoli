@@ -4,38 +4,48 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - development  # Ejecutar cuando haya cambios en la rama development
+      - development  # Ejecutar cuando haya cambios en development
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Chequear el repositorio
-    - name: Checkout code
+    # 1. Checkout a la rama development para hacer el merge
+    - name: Checkout development branch
       uses: actions/checkout@v3
-
-    # 2. Configurar Node.js
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
       with:
-        node-version: '18'  # Cambia la versión según tu proyecto
+        ref: development
 
-    # 3. Instalar dependencias
-    - name: Install dependencies
-      run: npm install
+    # 2. Hacer merge de development a main
+    - name: Merge development into main
+      run: |
+        git fetch origin
+        git checkout main
+        git merge development --no-ff -m "Merge development into main"
 
-    # 4. Construir el proyecto
-    - name: Build project
-      run: npm run build # Cambia este comando si tu proyecto usa otro proceso de build
+    # 3. Hacer el build en la rama main
+    - name: Build project on main
+      run: |
+        npm install
+        npm run build  # Cambia esto si tu proceso de build es diferente
 
-    # 5. Desplegar a la rama main
-    - name: Deploy to Main
+    # 4. Eliminar todo excepto la carpeta public/
+    - name: Clear all except public
+      run: |
+        find . -mindepth 1 -not -name 'public' -exec rm -rf {} +  # Eliminar todo excepto `public`
+
+    # 5. Mover el contenido de `public` a la raíz
+    - name: Move public content to root
+      run: |
+        cp -r public/* .  # Copiar el contenido de public a la raíz
+        rm -rf public  # Eliminar la carpeta public después de mover el contenido
+
+    # 6. Confirmar y publicar los cambios en main
+    - name: Commit and push changes to main
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-        git checkout -b main || git checkout main
-        rm -rf *
         git add .
-        git commit -m "Deploy from GitHub Actions"
+        git commit -m "Deploy from development to main"
         git push origin main --force
