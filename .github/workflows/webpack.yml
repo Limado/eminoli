@@ -44,8 +44,8 @@ jobs:
     # 6. Configurar el nombre y correo para el commit
     - name: Configure git user
       run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
     # 7. Confirmar y publicar los cambios en main
     - name: Commit and push changes to main
