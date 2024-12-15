@@ -29,7 +29,8 @@
         "build": "webpack-cli --mode=production",
         "start": "node nodeserver/express.js --mode=production",
         "start-dev": "node src/core/nodeserver/express.js --mode=development",
-        "reinstall": "rm -rf node_modules package-lock.json && npm cache clean --force && npm install"
+        "reinstall": "rm -rf node_modules package-lock.json && npm cache clean --force && npm install",
+        "git-reset": "git reset --soft HEAD~1"
     },
     "repository": {
         "type": "git",
