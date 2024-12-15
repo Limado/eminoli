@@ -17,7 +17,7 @@ const Resources = [{
 },
 {
     "key": "about_description_1_line_1",
-    "value": "I am a professional with experience in leading development teams, acting as a Scrum Master to ensure the agile delivery of quality solutions."
+    "value": "Professional with experience in team leadership, agile methodologies, and delivering high-quality solutions."
 },
 {
     "key": "about_description_1_line_2",
@@ -37,7 +37,7 @@ const Resources = [{
 },
 {
     "key": "about_description_3",
-    "value": "I focus on the design, development, and maintenance of digital products, ensuring robust, scalable code aligned with the best industry practices. My approach combines technical leadership, process management, and a constant commitment to innovation."
+    "value": "As a Technical Leader, I specialize in designing, developing, and maintaining scalable, robust digital products while driving technical excellence within teams. With extensive experience in managing development workflows, automating processes, and implementing industry best practices, I bring a blend of hands-on expertise and strategic leadership. My technical skills include Git, GitHub Actions, Jira, Webpack/Rspack and Docker, enabling me to optimize project efficiency and foster seamless collaboration in agile environments. I am committed to delivering innovative solutions and empowering teams to achieve exceptional results through mentorship and process optimization."
 },
 {
     "key": "birthday",

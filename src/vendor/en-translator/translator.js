@@ -66,7 +66,7 @@ export default class Translator {
 
         switch (translateTo.toLowerCase()) {
             case "html":
-                control.html("&nbsp;");
+                control.html("");
                 [...translated].forEach((letter, i) => {
                     setTimeout(() => {
                         control.html(control.html() + letter);

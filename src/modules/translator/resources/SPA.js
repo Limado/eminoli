@@ -17,7 +17,7 @@ const Resources = [{
 },
 {
     "key": "about_description_1_line_1",
-    "value": "Soy un profesional con experiencia en liderar equipos de desarrollo, actuando como Scrum Master para garantizar la entrega ágil de soluciones de calidad."
+    "value": "Profesional con experiencia en liderazgo de equipos, metodologías ágiles y entrega de soluciones de alta calidad."
 },
 {
     "key": "about_description_1_line_2",
@@ -37,7 +37,7 @@ const Resources = [{
 },
 {
     "key": "about_description_3",
-    "value": "Me enfoco en el diseño, desarrollo y mantenimiento de productos digitales, asegurando un código robusto, escalable y alineado con las mejores prácticas de la industria. Mi enfoque combina liderazgo técnico, gestión de procesos y un compromiso constante con la innovación."
+    "value": "Como Líder Técnico, me especializo en el diseño, desarrollo y mantenimiento de productos digitales escalables y robustos, impulsando la excelencia técnica dentro de los equipos. Con amplia experiencia en la gestión de flujos de trabajo de desarrollo, automatización de procesos e implementación de mejores prácticas de la industria, combino experiencia técnica práctica con liderazgo estratégico. Mis habilidades incluyen herramientas clave como Git, GitHub Actions, Jira, Webpack/Rspack y Docker, lo que me permite optimizar la eficiencia de los proyectos y fomentar una colaboración fluida en entornos ágiles."
 },
 {
     "key": "birthday",

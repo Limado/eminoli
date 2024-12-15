@@ -22,7 +22,8 @@ module.exports = {
     entry: './src/index.js',
     // The location of the build folder described above
     output: {
-        filename: `index.js`,
+        //filename: '[name].[contenthash].js',
+        filename: 'index.js',
         path: path.resolve(__dirname, isProduction ? 'dist' : 'public'),
         clean: true,
     },
@@ -39,6 +40,13 @@ module.exports = {
         }],
     },
     plugins: [
+        // new HtmlWebpackPlugin({
+        //     template: path.resolve(__dirname, 'src/index.html'),
+        //     filename: 'index.html',
+        //     minify: isProduction,
+        //     inject: 'body',
+        //     title: "eminoli",
+        // }),
         new CopyWebpackPlugin({
             patterns: [
                 { from: path.resolve(__dirname, 'src/assets'), to: path.resolve(__dirname, isProduction ? 'dist/assets' : 'public/assets') },
