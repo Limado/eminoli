@@ -32,7 +32,7 @@ jobs:
         git config user.email "github-actions@github.com"
         git checkout --orphan main # Cambia "deploy-branch" por la rama de destino
         git --work-tree=dist add --all
-        git --work-tree=dist commit -m "Pushing to main"
+        git --work-tree=dist commit -m "Github Action Deploy"
         git push origin HEAD:main --force
     # # 1. Checkout de la rama main
     # - name: Checkout main branch
