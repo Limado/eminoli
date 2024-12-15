@@ -1,8 +1,8 @@
-name: Deploy
+name: Nova
 on:
     pull_request:
       branches:
-        - main
+        - no-existe
 
 jobs:
     build-and-deploy:
