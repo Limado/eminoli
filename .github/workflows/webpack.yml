@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-      - development  # Ejecutar cuando haya cambios en `development`
+      - no-branch  # Ejecutar cuando haya cambios en `development`
 
 jobs:
   build-and-deploy:

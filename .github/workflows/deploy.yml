@@ -1,0 +1,52 @@
+on:
+    pull_request:
+      branches:
+        - main
+
+jobs:
+    build-and-deploy:
+      runs-on: ubuntu-latest
+  
+      steps:
+        # 1. Clonar el repositorio
+        - name: Checkout repository
+          uses: actions/checkout@v4
+  
+        # 2. Ejecutar el build (esto generará la carpeta dist)
+        - name: Run build to generate dist
+          run: |
+            npm install
+            npm run build  # Asegúrate de que 'build' genera la carpeta dist
+  
+        # 3. Eliminar todo excepto la carpeta dist
+        - name: Remove all except dist
+          run: |
+            find . -mindepth 1 ! -regex '^./dist\(/.*\)?' -delete
+  
+        # 4. Mover los archivos de dist al root
+        - name: Move dist to root
+          run: |
+            mv dist/* .
+            rmdir dist  # Eliminar la carpeta dist vacía
+  
+        # 5. Confirmar los cambios
+        - name: Commit changes
+        #   run: |
+        #     git config user.name "github-actions[bot]"
+        #     git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        #     git add .
+        #     git commit -m "Prepare deployment: Moved dist to root"
+  
+        #     - name: Commit and push changes to main
+            env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Usa el token secreto de GitHub Actions
+            run: |
+                git config user.name "GitHub Actions"
+                git config user.email "github-actions@github.com"
+                git add .
+                git commit -m "Deploy dist"
+                git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git main --force
+            
+        # 6. Subir los cambios al pull request
+        - name: Push changes to PR
+          run: git push
