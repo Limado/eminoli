@@ -1,4 +1,4 @@
-name: Nada
+name: Build and Push to main
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
     steps:
     # 1. Checkout de la rama development para hacer el build
     - name: Checkout development branch
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         ref: development
         fetch-depth: 0  # Asegura que se obtienen todas las referencias del repositorio
@@ -24,7 +24,7 @@ jobs:
         npm run build  # Ajusta este comando si tu build es diferente
 
     # 3. Copiar la carpeta dist a otra rama
-    - name: Deploy to main
+    - name: Push to main
       # env:
       #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Usa el token secreto de GitHub Actions
       run: |
@@ -32,7 +32,7 @@ jobs:
         git config user.email "github-actions@github.com"
         git checkout --orphan main # Cambia "deploy-branch" por la rama de destino
         git --work-tree=dist add --all
-        git --work-tree=dist commit -m "Deploying to deploy-branch"
+        git --work-tree=dist commit -m "Pushing to main"
         git push origin HEAD:main --force
     # # 1. Checkout de la rama main
     # - name: Checkout main branch
