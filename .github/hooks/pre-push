@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Ejecutar el build
+echo "Ejecutando build antes del push..."
+npm run build
+BUILD_STATUS=$?
+
+if [ $BUILD_STATUS -ne 0 ]; then
+    echo "El build falló. Cancelando el push."
+    exit 1
+fi
+
+echo "Build exitoso. Procediendo con el push."
+exit 0

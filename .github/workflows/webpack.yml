@@ -10,27 +10,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Checkout de la rama development para hacer el build
-    - name: Checkout development branch
-      uses: actions/checkout@v3
-      with:
-        ref: development
-        fetch-depth: 0  # Asegura que se obtienen todas las referencias del repositorio
+    # # 1. Checkout de la rama development para hacer el build
+    # - name: Checkout development branch
+    #   uses: actions/checkout@v3
+    #   with:
+    #     ref: development
+    #     fetch-depth: 0  # Asegura que se obtienen todas las referencias del repositorio
 
-    # 2. Hacer el build en la rama development
-    - name: Build project in development
-      run: |
-        npm install
-        npm run build  # Ajusta este comando si tu build es diferente
+    # # 2. Hacer el build en la rama development
+    # - name: Build project in development
+    #   run: |
+    #     npm install
+    #     npm run build  # Ajusta este comando si tu build es diferente
 
-    # 3. Checkout de la rama main
+    # 1. Checkout de la rama main
     - name: Checkout main branch
       uses: actions/checkout@v3
       with:
         ref: main
         fetch-depth: 0  # Obtener todas las ramas y referencias
 
-    # 4. Copiar el contenido de dist/ desde development a main
+    # 2. Copiar el contenido de dist/ desde development a main
     - name: Copy dist content from development to main
       run: |
         git fetch origin development  # Asegurarse de que la rama development esté actualizada
@@ -38,7 +38,7 @@ jobs:
         cp -r dist/* .  # Copiar todo el contenido de dist/ a la raíz de main
         rm -rf dist  # Eliminar la carpeta dist después de mover su contenido
 
-    # 5. Commit y push de los cambios en main
+    # 3. Commit y push de los cambios en main
     - name: Commit and push changes to main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Usa el token secreto de GitHub Actions
