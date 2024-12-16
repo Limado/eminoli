@@ -37,7 +37,7 @@ const Resources = [{
 },
 {
     "key": "about_description_2",
-    "value": "Mas de 15 años de experiencia disfrutando programar."
+    "value": "Mas de 15 años de experiencia disfrutando de la programación."
 },
 {
     "key": "about_description_3",
