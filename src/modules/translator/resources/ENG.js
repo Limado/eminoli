@@ -16,6 +16,10 @@ const Resources = [{
     "value": "Career"
 },
 {
+    "key": "menu_4",
+    "value": "Protfolio"
+},
+{
     "key": "about_description_1_line_1",
     "value": "Professional with experience in team leadership, agile methodologies, and delivering high-quality solutions."
 },
@@ -89,7 +93,7 @@ const Resources = [{
 },
 {
     "key": "skillsSummary_1",
-    "value": "In my constant quest for learning, I have explored and worked with various technology stacks, including aspects of web design, which I have continued to use and refine throughout my career. Below are some of the stacks I have worked with and the years of experience I have accumulated in each:"
+    "value": "In my constant quest for learning, I have explored and worked with various technology stacks, including aspects of web design, which I have continued to use and refine throughout my career."
 },
 {
     "key": "skillsSummary_2",
@@ -190,6 +194,30 @@ const Resources = [{
 {
     "key": "neote_lead_sumary_4",
     "value": "Focus on best practices, innovation, and high-impact results."
+},
+{
+    "key": "projects",
+    "value": "Projects"
+},
+{
+    "key": "description",
+    "value": "Description"
+},
+{
+    "key": "category",
+    "value": "Cateogry"
+},
+{
+    "key": "client",
+    "value": "Client"
+},
+{
+    "key": "reporttv_finder_description",
+    "value": "Interactive TV guide for cable services, designed to simplify program and schedule searches, enhancing the user experience when consuming television content."
+},
+{
+    "key": "portfolio_text",
+    "value": "Here are some of the projects I've worked on, showcasing the technological solutions I've developed throughout my career. Each one reflects my practical and efficient approach to solving problems, improving processes, and delivering optimal user experiences."
 },
 ]
 

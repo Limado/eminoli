@@ -4,13 +4,23 @@ import ENG from "./resources/ENG.js";
 
 const initializeTranslator = () => {
     // Initialize translator.
+    let language = "SPA";
+    let resources = SPA;
+    if (language = sessionStorage.getItem("T_Language")) {
+        if (language == "SPA")
+            resources = SPA
+        else
+            resources = ENG
+    } else {
+        sessionStorage.setItem("T_Language", "SPA");
+    }
     const $T = new Translator({
         resources: "./assets/js/resources/",
-        languaje: SPA,
+        languaje: resources,
     });
     // Translate
 
-    $("#btnLanguaje").click(function(e) {
+    $("#btnLanguaje")?.click(function (e) {
         e.preventDefault();
         const isTranslating = $(this).attr('translating');
         if (isTranslating) return;
@@ -18,9 +28,11 @@ const initializeTranslator = () => {
         $(this).attr('translating', true);
         if (lang == "Español") {
             $("#languaje").html("English");
+            sessionStorage.setItem("T_Language", "SPA");
             $T.setLanguaje(SPA);
         } else {
             $("#languaje").html("Español");
+            sessionStorage.setItem("T_Language", "ENG");
             $T.setLanguaje(ENG);
         }
         setTimeout(() => { $("#btnLanguaje").removeAttr('translating') }, 2000);
