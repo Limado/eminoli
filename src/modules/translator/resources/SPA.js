@@ -1,223 +1,29 @@
 'use strict';
-const Resources = [{
-    "key": "about",
-    "value": "Sobre mi"
-},
-{
-    "key": "menu_1",
-    "value": "Inicio"
-},
-{
-    "key": "menu_2",
-    "value": "Sobre mi"
-},
-{
-    "key": "menu_3",
-    "value": "Trayectoria"
-},
-{
-    "key": "menu_4",
-    "value": "Protafolio"
-},
-{
-    "key": "about_description_1_line_1",
-    "value": "Profesional con experiencia en liderazgo de equipos, metodologías ágiles y entrega de soluciones de alta calidad."
-},
-{
-    "key": "about_description_1_line_2",
-    "value": "Entusiasta y apasionado por el desarrollo de software."
-},
-{
-    "key": "about_description_1_line_3",
-    "value": "Padre orgulloso de 2 hermosos hijos y esposo de una mujer maravillosa."
-},
-{
-    "key": "about_description_1_line_4",
-    "value": "Y claro que este sitio está redactado con ayuda de ChatGPT, soy desarrollador 😉"
-},
-{
-    "key": "about_description_2",
-    "value": "Mas de 15 años de experiencia disfrutando de la programación."
-},
-{
-    "key": "about_description_3",
-    "value": "Como Líder Técnico, me especializo en el diseño, desarrollo y mantenimiento de productos digitales escalables y robustos, impulsando la excelencia técnica dentro de los equipos. Con amplia experiencia en la gestión de flujos de trabajo de desarrollo, automatización de procesos e implementación de mejores prácticas de la industria, combino experiencia técnica práctica con liderazgo estratégico. Mis habilidades incluyen herramientas clave como Git, GitHub Actions, Jira, Webpack/Rspack y Docker, lo que me permite optimizar la eficiencia de los proyectos y fomentar una colaboración fluida en entornos ágiles."
-},
-{
-    "key": "birthday",
-    "value": "Fecha de nacimiento:"
-},
-{
-    "key": "birthdate",
-    "value": "20 Febrero 1985"
-},
-{
-    "key": "phone",
-    "value": "Móvil:"
-},
-{
-    "key": "city",
-    "value": "Ciudad:"
-},
-{
-    "key": "age",
-    "value": "Edad:"
-},
-{
-    "key": "resume_title",
-    "value": "Experiencia Profesional"
-},
-{
-    "key": "email",
-    "value": "Email:"
-},
-{
-    "key": "facts_1",
-    "value": "Aunque mi trayectoria profesional ha sido mayoritariamente en relación de dependencia, he complementado mi experiencia realizando proyectos freelance en mis tiempos libres. Estas iniciativas me han permitido adquirir nuevos conocimientos, explorar diversas tecnologías y enriquecer mi perspectiva en el desarrollo de soluciones innovadoras."
-},
-{
-    "key": "frontend",
-    "value": "Proyectos web"
-},
-{
-    "key": "repositories",
-    "value": "Repositorios en github"
-},
-{
-    "key": "backend",
-    "value": "Otros proyectos"
-},
-{
-    "key": "skills",
-    "value": "Conocimientos"
-},
-{
-    "key": "skillsSummary_1",
-    "value": "En mi constante búsqueda de aprendizaje, he explorado y trabajado con diversos stacks tecnológicos, incluyendo algunos aspectos de diseño web, los cuales he seguido utilizando y perfeccionando a lo largo de mi carrera."
-},
-{
-    "key": "skillsSummary_2",
-    "value": "Estos son algunos de ellos y los años que llevo usandolos:"
-},
-{
-    "key": "resume",
-    "value": "Trayectoria"
-},
-{
-    "key": "resumeContent",
-    "value": ""
-},
-{
-    "key": "integration",
-    "value": "Integrations"
-},
-{
-    "key": "sumary",
-    "value": "Resumen"
-},
-{
-    "key": "myname",
-    "value": "Emiliano Noli"
-},
-{
-    "key": "organics_position",
-    "value": "Team leader"
-},
-{
-    "key": "organics_li_1",
-    "value": "Liderazgo y desarrollo de software para nuestros clientes"
-},
-{
-    "key": "organics_li_2",
-    "value": "Consultoría en desarrollo"
-},
-{
-    "key": "neotel_position",
-    "value": "Fullstack developer"
-},
-{
-    "key": "neotel_li_1",
-    "value": "Desarrollo y mantenimiento del producto principal de la empresa, asegurando su rendimiento y evolución continua."
-},
-{
-    "key": "neotel_li_2",
-    "value": "Desarrollo de nuevos productos"
-},
-{
-    "key": "neotel_li_3",
-    "value": "Desarrollo de integraciones con plataformas externas"
-}, {
-    "key": "neotel_li_4",
-    "value": "Responsable de procesos de calidad ISO-9001"
-},
-{
-    "key": "reportv_position",
-    "value": "Web Developer Lead"
-},
-{
-    "key": "reportv_li_1",
-    "value": "Responsable del desarrollo y mantenimiento de soluciones web."
-},
-{
-    "key": "reportv_li_2",
-    "value": "Administrador de servidores web (Ubuntu/apache2)"
-},
-{
-    "key": "opratel_position",
-    "value": "Junior Developer"
-},
-{
-    "key": "opratel_p_1",
-    "value": "Mi primer empleo como desarrollador"
-},
-{
-    "key": "opratel_p_2",
-    "value": "Desarrollo de portales wap mobile para servicios de suscripcion sms"
-},
-{
-    "key": "neotel_position_2",
-    "value": "Tech Leader"
-},
-{
-    "key": "neote_lead_sumary_1",
-    "value": "Experiencia liderando equipos de desarrollo y facilitando la entrega ágil como Scrum Master."
-},
-{
-    "key": "neote_lead_sumary_2",
-    "value": "Responsable de implementar procesos de desarrollo alineados con ISO 9001 para garantizar calidad y mejora continua."
-},
-{
-    "key": "neote_lead_sumary_3",
-    "value": "Diseño, desarrollo y mantenimiento de productos digitales robustos y escalables."
-},
-{
-    "key": "neote_lead_sumary_4",
-    "value": "Enfoque en las mejores prácticas, innovación y resultados de alto impacto."
-},
-{
-    "key": "projects",
-    "value": "Proyectos"
-},
-{
-    "key": "description",
-    "value": "Descripción"
-},
-{
-    "key": "category",
-    "value": "Cateogría"
-},
-{
-    "key": "client",
-    "value": "Cliente"
-},
-{
-    "key": "reporttv_finder_description",
-    "value": "Guía de TV interactiva para servicios de cable, diseñada para facilitar la búsqueda de programas y horarios, mejorando la experiencia del usuario al consumir contenido televisivo."
-},
-{
-    "key": "portfolio_text",
-    "value": "Aquí presento algunos de los proyectos en los que he trabajado, destacando soluciones tecnológicas que he desarrollado a lo largo de mi carrera. Cada uno refleja mi enfoque práctico y eficiente para resolver problemas, mejorar procesos y ofrecer experiencias de usuario óptimas."
-},
-]
+
+const Resources = [
+    { key: 'document_title', value: 'Emiliano Noli | Tech Lead y Arquitectura de Software' },
+    { key: 'meta_description', value: 'Emiliano Noli es Tech Lead con 15 años de experiencia en arquitectura de software, liderazgo técnico, desarrollo full stack e infraestructura.' },
+    { key: 'menu_1', value: 'Inicio' }, { key: 'menu_2', value: 'Sobre mí' }, { key: 'menu_3', value: 'Trayectoria' }, { key: 'menu_4', value: 'Portfolio' }, { key: 'menu_5', value: 'Contacto' },
+    { key: 'hero_title', value: 'TECH LEAD | ARQUITECTURA DE SOFTWARE | LIDERAZGO DE INGENIERÍA' },
+    { key: 'hero_subtitle', value: 'Liderando equipos, diseñando software y mejorando procesos de ingeniería.' }, { key: 'hero_experience', value: '15 años de experiencia en desarrollo de software.' },
+    { key: 'hero_about', value: 'Sobre mí' }, { key: 'hero_resume', value: 'Experiencia' }, { key: 'hero_skills', value: 'Conocimientos' }, { key: 'hero_portfolio', value: 'Portfolio' }, { key: 'hero_contact', value: 'Contacto' },
+    { key: 'about', value: 'Sobre mí' }, { key: 'about_intro', value: 'Tech Lead con 15 años de experiencia en desarrollo de software, arquitectura y evolución de productos tecnológicos.' },
+    { key: 'about_title', value: 'Liderazgo técnico con enfoque hands-on' }, { key: 'about_summary', value: 'Lidero equipos multidisciplinarios, defino arquitecturas y lineamientos técnicos, y participo activamente en las decisiones de ingeniería durante todo el ciclo de desarrollo.' },
+    { key: 'about_details', value: 'Combino liderazgo técnico con experiencia práctica en desarrollo backend, frontend, bases de datos e infraestructura. Incorporo herramientas de IA y agentes de programación mediante diseño de soluciones, definición arquitectónica, supervisión de implementación y revisión de código.' },
+    { key: 'about_process', value: 'Estoy orientado a la mejora continua, la calidad del software y la optimización de procesos de ingeniería, con experiencia en prácticas basadas en ISO 9001, gestión de equipos y planificación de entregas.' },
+    { key: 'location', value: 'Ubicación:' }, { key: 'language', value: 'Inglés:' }, { key: 'language_value', value: 'Avanzado' }, { key: 'email', value: 'Email:' },
+    { key: 'skills', value: 'Conocimientos técnicos' }, { key: 'skills_summary', value: 'Tecnologías y prácticas utilizadas para diseñar, construir y evolucionar productos de software.' }, { key: 'skills_current', value: 'Stack actual' }, { key: 'skills_backend', value: 'Backend' }, { key: 'skills_frontend', value: 'Frontend' }, { key: 'skills_data', value: 'Bases de datos' }, { key: 'skills_other', value: 'Otras tecnologías y experiencia' }, { key: 'skills_architecture', value: 'Arquitectura e ingeniería' }, { key: 'skills_devops', value: 'Infraestructura y DevOps' }, { key: 'skills_ai', value: 'Desarrollo asistido por IA' },
+    { key: 'resume', value: 'Trayectoria' }, { key: 'resume_content', value: 'Experiencia en liderazgo técnico, arquitectura, desarrollo de productos e implementación de procesos de ingeniería.' }, { key: 'resume_title', value: 'Experiencia profesional' }, { key: 'present', value: 'Actualidad' },
+    { key: 'neotel_lead_position', value: 'Tech Lead' }, { key: 'neotel_lead_summary', value: 'Liderazgo técnico de un equipo multidisciplinario de 5 personas: 3 desarrolladores y 2 profesionales de QA.' }, { key: 'neotel_lead_1', value: 'Diseño de arquitectura, productos y funcionalidades; definición de lineamientos de implementación y revisión de código.' }, { key: 'neotel_lead_2', value: 'Planificación, priorización, seguimiento, coordinación de testing y control de calidad; participación hands-on en la evolución de productos.' }, { key: 'neotel_lead_3', value: 'Decisiones de infraestructura, servidores y despliegues; incorporación y supervisión técnica de herramientas de IA y agentes de programación.' }, { key: 'neotel_lead_4', value: 'Formalización de procesos basada en lineamientos de ISO 9001 e incorporación de Jira Software y GitHub para trazabilidad y versionamiento.' }, { key: 'neotel_lead_5', value: 'Reducción del tiempo de respuesta ante indisponibilidades de aproximadamente dos semanas a 2–3 días.' }, { key: 'neotel_lead_6', value: 'Estrategia de releases: entregas menores cada 20 días y releases mayores planificados cada 4 meses.' },
+    { key: 'neotel_dev_position', value: 'Analista Programador' }, { key: 'neotel_dev_1', value: 'Desarrollo de nuevas aplicaciones y funcionalidades para productos de la empresa.' }, { key: 'neotel_dev_2', value: 'Backend con Node.js y Express.js; frontend con React.js, Angular, JavaScript, jQuery y Bootstrap.' }, { key: 'neotel_dev_3', value: 'Integraciones con ERP, CRM y Salesforce mediante OpenCTI; desarrollo de SPA e intranets.' }, { key: 'neotel_dev_4', value: 'Mantenimiento y evolución de aplicaciones empresariales en C#, VB.NET y ASP.NET; participación en procesos de calidad basados en ISO 9001.' },
+    { key: 'organics_position', value: 'Team Leader' }, { key: 'organics_li_1', value: 'Liderazgo y desarrollo de software para clientes.' }, { key: 'organics_li_2', value: 'Consultoría en desarrollo.' },
+    { key: 'reportv_position', value: 'Analista Programador' }, { key: 'reportv_li_1', value: 'Desarrollo y mantenimiento de sistemas y proyectos web con PHP, CodeIgniter, C# .NET, ASP.NET MVC y Entity Framework.' }, { key: 'reportv_li_2', value: 'Trabajo con MySQL, SQL Server, módulos para sistemas internos de gestión, Linux y Windows Server.' },
+    { key: 'opratel_position', value: 'Analista Programador' }, { key: 'opratel_li_1', value: 'Desarrollo de portales web y WAP con PHP.' }, { key: 'opratel_li_2', value: 'Desarrollo de servicios Windows con C# .NET y trabajo con SQL Server.' },
+    { key: 'neotel_support_position', value: 'Soporte Técnico / Analista Funcional' }, { key: 'neotel_support_1', value: 'Soporte técnico nacional e internacional de plataformas de gestión para Contact Centers.' }, { key: 'neotel_support_2', value: 'Administración de SQL Server, Stored Procedures, reporting e integraciones CRM mediante Web Services.' }, { key: 'neotel_support_3', value: 'Planificación, desarrollo, testing y puesta en producción de integraciones; configuración de servidores y soporte de segundo nivel.' },
+    { key: 'jet_position', value: 'Coordinación y Soporte – Área de Contenidos' }, { key: 'jet_1', value: 'Coordinación y capacitación de personal; supervisión de contenidos web y WAP.' }, { key: 'jet_2', value: 'Gestión, preparación y testing de contenidos multimedia; administración de MySQL y coordinación con clientes y proveedores.' },
+    { key: 'portfolio', value: 'Portfolio' }, { key: 'projects', value: 'Proyectos' }, { key: 'portfolio_text', value: 'Una selección de proyectos en los que participé, presentada sin exponer información confidencial.' }, { key: 'reporttv_finder_label', value: 'Guía de TV interactiva' },
+    { key: 'contact', value: 'Contacto' }, { key: 'contact_text', value: 'Estoy disponible para conversar sobre desafíos de liderazgo técnico, arquitectura de software y evolución de productos.' }, { key: 'contact_email', value: 'Escribirme por email' }, { key: 'contact_linkedin', value: 'Ver LinkedIn' }, { key: 'contact_github', value: 'Ver GitHub' }, { key: 'footer_tagline', value: 'Tech Lead · Arquitectura de Software · Liderazgo de Ingeniería' }, { key: 'copyright', value: 'Emiliano Noli. Todos los derechos reservados.' },
+    { key: 'reporttv_finder_title', value: 'ReporTV Finder' }, { key: 'description', value: 'Descripción' }, { key: 'category', value: 'Categoría' }, { key: 'reporttv_category', value: 'Guía de TV' }, { key: 'client', value: 'Cliente' }, { key: 'reporttv_finder_description', value: 'Guía de TV interactiva para servicios de cable, diseñada para facilitar la búsqueda de programas y horarios.' }
+];
 
 export default { languaje: 'SPA', resources: Resources };

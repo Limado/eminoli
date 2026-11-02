@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Headers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 300px;
+            min-height: 50px;
+            background-color: #f9f9f9;
+        }
+        button {
+            padding: 10px 20px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Prueba de Headers con Node.js</h1>
+
+    <button onclick="makeRequest('/with-header')">Obtener con Header</button>
+    <button onclick="makeRequest('/without-header')">Obtener sin Header</button>
+
+    <div id="result">Aquí se mostrará el resultado de los headers.</div>
+
+    <script>
+        // Función para hacer la solicitud a los endpoints y mostrar los headers en el div
+        function makeRequest(endpoint) {
+            fetch('http://localhost:3000' + endpoint)
+                .then(response => {
+                    // Mostrar los headers en el div
+                    let resultDiv = document.getElementById('result');
+                    let headers = '';
+                    response.headers.forEach((value, key) => {
+                        headers += `<strong>${key}:</strong> ${value}<br>`;
+                    });
+                    if (!headers) {
+                        headers = 'No se encontraron headers';
+                    }
+
+                    resultDiv.innerHTML = `<p>Resultado de la solicitud a ${endpoint}:</p><p>${headers}</p>`;
+
+                    // Opcionalmente, también puedes hacer algo con el cuerpo de la respuesta
+                    return response.text();
+                })
+                .catch(error => {
+                    document.getElementById('result').innerHTML = 'Error en la solicitud: ' + error;
+                });
+        }
+    </script>
+
+</body>
+</html>

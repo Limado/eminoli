@@ -2,7 +2,7 @@ const express = require('express')
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const port = 8080;
+const port = 3000;
 const url = require('url');
 //const proxy = require('express-http-proxy');
 
@@ -57,6 +57,26 @@ app.get("/*", (req, res) => {
 //     });
 //     res.send("ok")
 // });
+
+
+// HEAEDERS TEST
+
+// Endpoint 1: Responde con un header personalizado "x-process-time"
+app.get('/with-header', (req, res) => {
+    const startTime = Date.now();
+    
+    // Simular un retraso para que el header tenga un valor distinto
+    setTimeout(() => {
+        const processTime = Date.now() - startTime;
+        res.set('x-process-time', processTime + 'ms');  // Agregar el header
+        res.send('Este endpoint tiene el header x-process-time');
+    }, 500);  // Retraso simulado de 500ms
+});
+
+// Endpoint 2: No responde con el header "x-process-time"
+app.get('/without-header', (req, res) => {
+    res.send('Este endpoint no tiene el header x-process-time');
+});
 
 /** Server https */
 let server = http.createServer(app);
